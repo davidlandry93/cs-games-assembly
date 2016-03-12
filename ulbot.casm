@@ -1,7 +1,9 @@
 start:
+  MOV :end $S
    MOV :start $B
    SUB #0xFF $B
-   MOV :end $C
+   MOV :start $C
+   ADD #0x1000 $C
 memFun:
    CMP #0x400000FF $B
        JMP <H> :noWriteBegin
@@ -12,7 +14,7 @@ memFun:
 	 MEMW [1] #0b00000000 #0x20000005
 	 MEMW [4] #0x20000000 #0x20000000
 
-   SUB #0xFF $B
+   SUB #0x122 $B
    JMP <> :writeEnd
 noWriteBegin:
    MOV #0x400FFF00 $B
@@ -27,7 +29,7 @@ writeEnd:
  	 MEMW [1] #0b00000000 #0x20000005
 	 MEMW [4] #0x20000000 #0x20000000
 
-	 ADD #0xFF $C
+	 ADD #0x122 $C
    JMP <> :memFun
 noWriteEnd:
    MOV #0x40000000 $C

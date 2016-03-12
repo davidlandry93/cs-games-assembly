@@ -1,5 +1,4 @@
 start:
-  MOV :end $S
    MOV :start $B
    SUB #0xFF $B
    MOV :start $C
